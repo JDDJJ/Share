@@ -1,5 +1,8 @@
-##单例解析
+> 静态和单例的区别
+##静态
+##单例
 
+##单例解析
 
 ```
  public static RetrofitUtil getInstance(){
