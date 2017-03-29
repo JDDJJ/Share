@@ -43,7 +43,7 @@ public class Inject {
                 int id = injectView.value();  
                 try {  
                     field.setAccessible(true);  
-                    field.set(activity, activity.findViewById(id));  
+                    field.set(activity, activity.findViewById(id));  //set(Object obj, Object value) 向obj对象的这个Field设置新值value
                 } catch (IllegalAccessException e) {  
                     Log.e(TAG, "IllegalAccessException = " + e.toString());  
                 }  
