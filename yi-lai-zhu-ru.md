@@ -13,4 +13,4 @@
 
 - 设计模式六大原则（6）：开闭原则
 
-** 今天只分享依赖注入 依赖倒置 或者叫控制反转（Inversion of Control，英文缩写为IoC 中的控制反转（Inversion of Control， 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）。依赖注入应用比较广泛**
+** 今天只分享依赖注入 依赖倒置 或者叫控制反转（Inversion of Control，英文缩写为IoC 中的控制反转（Inversion of Control， 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）。依赖注入应用比较广泛**+
