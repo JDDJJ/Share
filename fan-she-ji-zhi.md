@@ -57,9 +57,10 @@ public static Class<?> getClassObj() {
 ##应用场景
 - 结合注解框架 eventbus retrofit butterknife 
 - 动态代理
-- spring hibernate等框架 
+- spring hibernate等框架
+ 
 **举例：**
-
+以下 
 
 ```
 @Documented  
