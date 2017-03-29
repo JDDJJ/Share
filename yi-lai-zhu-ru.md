@@ -57,9 +57,23 @@ class B{
   //
   class A{
     public A(Weapon w){
-      B b=new B();
+      w.attack();//这里传入的不是接口 是实现了该接口的对象
     }
   }
+
+public static void main(String[] args){
+		A a = new A(new Weapon1());
+	        A a2=new A(new Weapon2())//而工厂模式 可是把生产Weapon的过程再接偶 相辅相成
+	
+	      
+	}
+        public static void main(String[] args){
+		A a = new A(WeaponFactory.getWeapon("Weapon1"));
+	        A a2 = new A(WeaponFactory.getWeapon("Weapon2"));
+//而工厂模式 可是把生产Weapon的过程再接偶 相辅相成
+	
+	      
+	}
 
   ```
 
