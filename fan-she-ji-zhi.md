@@ -58,6 +58,7 @@ public static Class<?> getClassObj() {
 - 结合注解框架 eventbus retrofit butterknife 
 - 动态代理
 - spring hibernate等框架
+- Gson 利用反射 生成对应对象 有些情况下你知道用户会怎么输入什么数据 你可以new一个类去接受 但是假如你不知道未来会接受什么数据 或者说就算知道了 ，你要进行大量重复操作 而类似的类很多 那我何不 在运行时 动态根据是什么类 有什么数据 进行newintsance呢
 **举例：**
 以下例子是android中 避免声明控件 重复的findviewbyId 联想到：javaweb中 Dao层根据一个model去读存数据 而利用反射 
 
