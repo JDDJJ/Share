@@ -27,7 +27,73 @@
   ```
 
 
+## 修饰的注解类型 API
 
+| 注解类型       | 含义                                      |
+| ---------- | --------------------------------------- |
+| Documented | 表示含有该注解类型的元素(带有注释的)会通过javadoc或类似工具进行文档化 |
+| Inherited  | 表示注解类型能被自动继承                            |
+| Retention  | 表示注解类型的存活时长                             |
+| Target     | 表示注解类型所适用的程序元素的种类                       |
+
+## Retention
+
+@Retention：表示该注解类型的注解保留的时长。当注解类型声明中没有@Retention元注解，则默认保留策略为RetentionPolicy.CLASS。关于保留策略(RetentionPolicy)是枚举类型，共定义3种保留方式
+
+| name    | exp                                      |
+| ------- | ---------------------------------------- |
+| SOURCE  | 仅存在Java源文件，经过编译器后便丢弃相应的注解                |
+| CLASS   | 存在Java源文件，以及经编译器后生成的Class字节码文件，但在运行时VM不再保留注释 |
+| RUNTIME | 存在源文件、编译生成的Class字节码文件，以及保留在运行时VM中，可通过反射性地读取注解 |
+
+示例代码：
+
+```
+@Documented
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Ety {
+    @Deprecated
+    String value();
+    @Deprecated
+    String name();
+}
+1234567891012345678910
+```
+
+例如，上面源码@Retention的定义中有一行@Retention(RetentionPolicy.RUNTIME)，意思是指当前注解的保留策略为RUNTIME，即存在Java源文件，也存在经过编译器编译后的生成的Class字节码文件，同时在运行时虚拟机(VM)中也保留该注解，可通过反射机制获取当前注解内容
+
+## Target
+
+表示该注解类型的所使用的程序元素类型。当注解类型声明中没有@Target元注解，则默认为可适用所有的程序元素。如果存在指定的@Target元注解，则编译器强制实施相应的使用限制。关于程序元素(ElementType)是枚举类型，共定义8种程序元素
+
+| ElementType     | exp               |
+| --------------- | ----------------- |
+| TYPE            | 类、接口（包括注解类型）或枚举声明 |
+| CONSTRUCTOR     | 构造方法声明            |
+| PACKAGE         | 包声明               |
+| LOCAL_VARIABLE  | 局部变量声明            |
+| METHOD          | 方法声明              |
+| ANNOTATION_TYPE | 注解类型声明            |
+| PARAMETER       | 参数声明              |
+| FIELD           | 字段声明（包括枚举常量）      |
+
+------
+
+### 代码如下
+
+```
+@Documented
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD})
+public @interface Ety {
+    @Deprecated
+    String value();
+    @Deprecated
+    String name();
+}
+```
 
 ## Android注解
 
@@ -45,7 +111,9 @@ compile 'com.android.support:support-annotations:latest.integration'
 
 ## IntDef和StringDef注解
 
-> 代替枚举 为什么需要枚举 为什么枚举好内存 逻辑泄漏是什么  
+> 代替枚举 为什么需要枚举 为什么枚举耗内存 逻辑泄漏是什么  
+
+**枚举的作用就是能表示一组类型相同的常量，是值类型**
 
 这里我们采用假设一个问题然后一步步解决学习：假设有一个User对象，我们需要记录user类型的变量，如何实现呢？
 
