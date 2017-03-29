@@ -93,8 +93,10 @@ class B{
 
 main(){
 B b=new B()
-A a=new A(b)
+A a=new A()
+a.injectB(b)
 }
+**//这种情况是有许多的类 如C，D都需要注入B 那我就抽像出接口
 ```
 
 
