@@ -58,9 +58,42 @@ public static Class<?> getClassObj() {
 - 结合注解框架 eventbus retrofit butterknife 
 - 动态代理
 - spring hibernate等框架
- 
 **举例：**
-以下 
+以下例子是android中 避免声明控件 重复的findviewbyId 联想到：javaweb中 Dao层根据一个model去读存数据 而利用反射 
+
+```
+User {
+  id
+  name
+  age
+}
+
+Course{
+  id
+  name
+  course_time
+}
+//Dao层 可以利用反射
+IDao{
+ read() 
+ wirte()
+}
+DaoIml{
+  init(Class class)
+  根据传入的class 遍历得到其中的constructor field method 等
+  read（）
+  write（）
+}
+否则
+UserDao{
+ User read()
+ write(User)
+}
+CourseDao{
+ Course read()
+ write(Course)
+}
+```
 
 ```
 @Documented  
