@@ -30,6 +30,77 @@ class B{
   
 }
 ```
+- 构造注入 
+```
+class A{
+  public A(B b){
+    
+  }
+}
+
+class B{
+  
+}
+
+main(){
+B b=new B()
+A a=new A(b)
+}
+```
+
+- set注入 
+```
+class A{
+  public A(){
+    
+  }
+  public setB(B b)
+}
+
+class B{
+  
+}
+
+main(){
+B b=new B()
+A a=new A()
+a.setB(b)
+}
+```
+
+
+- 接口注入 
+
+
+```
+interface inject{
+  injectB(B b)
+  }
+class A implement inject{
+  B b;
+  public A(){
+    
+  }
+  injectB(B b){
+  this.b=b;
+  }
+  
+}
+
+class B{
+  
+}
+
+main(){
+B b=new B()
+A a=new A(b)
+}
+```
+
+
+
+
+
 
 > 为什么要依赖注入 依赖注入的3种模式 构造器注入 setter 注入 （懒注入）接口注入
 
@@ -63,14 +134,13 @@ class B{
 
 public static void main(String[] args){
 		A a = new A(new Weapon1());
-	        A a2=new A(new Weapon2())//而工厂模式 可是把生产Weapon的过程再接偶 相辅相成
+	        A a2=new A(new Weapon2())//而工厂模式 可是把生产Weapon的过程模块化 相辅相成
 	
 	      
 	}
         public static void main(String[] args){
 		A a = new A(WeaponFactory.getWeapon("Weapon1"));
-	        A a2 = new A(WeaponFactory.getWeapon("Weapon2"));
-//而工厂模式 可是把生产Weapon的过程再接偶 相辅相成
+	        A a2 = new A(WeaponFactory.getWeapon("Weapon2"));//工厂模式是为了制造 不是为了解决依赖
 	
 	      
 	}
