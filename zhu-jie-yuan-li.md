@@ -196,7 +196,14 @@ public class A {
 ```
 
 ```java
-public class B extends A {//这里由于B 继承了A 所以不用在调注入方法 注解利用反射机制 动态加载
+public class B extends A {
+  //这里由于B 继承了A 所以不用在调注入方法 注解利用反射机制 动态加载 
+  //java中继承 先执行子类构造方法 在执行父类构造方法 如果子类的构造方法中没有显示的调用基类的构造方法，则		系统默认调用基类的无参数构造方法。 
+  //子类可以在自己的构造方法中使用super(argument_list）调用基类的构造方法。
+
+  //　2.1、使用this(argument_list)调用本类的另外构造方法。
+
+ 　//2.2、如果调用super，必须写在子类构造方法的第一行。
     @Hi("this is b.str")
     String str;
 }
