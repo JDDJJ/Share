@@ -15,11 +15,13 @@
 
 这个东东也是今天看到的，以前给同事做分享的，一般会用gitbook或者wiki，当然啦，肯定实现markdown写好东西上传的喽。这里安利一下markdown 学会它，就可以抛弃word了 排版什么的太口怕了。markdown语法其实很简单，用超级简单也不为过的了。
 
+---
+
 
 
 ## 直达
 
-[本人这篇文档的幻灯片版 大家可以直接点开看怎么用 和效果哦](https://gitpitch.com/jddjj/share)
+[本人这篇文档的幻灯片版 大家可以直接点开看怎么用 和效果哦](https://gitpitch.com/jddjj/share/master?grs=github&t=moon)
 
 ---
 
@@ -36,7 +38,9 @@
 - Github账户 新建一个工程，比如share
 - 在该工程下新建一个名叫PITCHME.md<必须叫这个>的文件 这个文件里就是markdown语法写的你要分享啦，或着导出啦的文档
 
-+++
+---
+
+
 
 - 拓展方面可以在创建一个PITCHME.yaml的文件 里面可以存储一些配置 比如
 
@@ -48,7 +52,7 @@ mousewheel : true//可以滚轮控制
 
    等等配置大家可以去官网[GitPitch](https://github.com/gitpitch/gitpitch/wiki/Slide-Delimiters)
 
-+++
+---
 
 - 还有一个要注意的点，如果想你的文案可以滑动 需要在 PITCHME.md中
 
