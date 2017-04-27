@@ -1,95 +1,80 @@
-## QuickAdapter
+> 前言
 
-1. 创建Holder 继承于BaseHolder<T> 并且设置BaseHolder的类型 T 创建的Holder不要用泛型修饰
+很久没有更新博客了，自己已经养成了记录一些成长途中点点滴滴的习惯，也存了不少的干货，但是都比较零散，有些话可能自己可以看懂，拿出来，大家会一脸懵逼！俗称——草稿！
 
-2. 创建 Adapter 继承于QiuckAdapter<T> 同样是QuickAdapter设置参数类型 T
+慢慢整理，慢慢分享吧！享受生活中的美好，分享给大家！我也很高兴的呢！
 
-   比如 QuickAdapter<User> 或者QuickAdapter<String>
-+++
-3. 在新建的Adapter中重写和实现QuickAdapter中的一些方法 
+> 积小流 成江河 积跬步 致千里
 
-   1. 构造方法
-
-   2. ```java
-      public BaseHolder<String> getHolder(View v)//返回第一步创建的Holder
-      ```
-
-   3. ```java
-      public int getLayoutId() {return R.layout.text_blank;}//设置viewholder的对应的布局文件
- +++     ```
-
-#### 使用
-
-- ```java
-  mRecyclerView.setAdapter(new StringAdapter(data));//其中data就是为Holder和Adapter设置的泛型T类型的List
-  ```
+----
 
 
-+++
-## MultiItemAdapter
 
-1. 创建Holder的过程是一样的 但是要创建多个对应的Holder 因为要的是混合布局
+# GitPitch
 
-2. 创建Adapter继承于MultiItemAdapter<T>并为其设置泛型  一般情况下 传入的数据Bean是一样的 只是由于一些status不同 从而改变相应布局 比如MultiItemAdapter<Product> 其中Product有进行中，已完成，和未开始等
+这个东东也是今天看到的，以前给同事做分享的，一般会用gitbook或者wiki，当然啦，肯定实现markdown写好东西上传的喽。这里安利一下markdown 学会它，就可以抛弃word了 排版什么的太口怕了。markdown语法其实很简单，用超级简单也不为过的了。
 
-3. 重写和实现MultiItemAdapter中的一些方法
+## 直达
 
-   1. 构造方法 
+[本人这篇文档的幻灯片版 大家可以直接点开看怎么用 和效果哦](https://gitpitch.com/jddjj/share)
 
-      ```java
-      public MultiAdapter(List<Map> data) {
-          super(data);
-         addItemType(1,R.layout.text_blank);
-         addItemType(2,R.layout.text_blank);
-         addItemType(3,R.layout.text_blank);
-      }
-      ```
-
-      要在构造方法中，执行 addItemType方法 将类型值以及对应的layoutId传入 
-
-      ```java
-      protected  void addItemType(int viewType, int layoutResId)
-      ```
-
-   2. 实例化对应Holder
-
-      ```java
-      public BaseHolder<Map> getHolder(int viewType, View v) {
-          BaseHolder holder = null;
-          switch (viewType) {
-
-              case 1:
-                  holder = new StringHolder(v);
-                  break;
-              case 2:
-                  holder = new StringHolder2(v);
-                  break;
-              case 3:
-                  holder = new StringHolder3(v);
-                  break;
-          }
-          return holder;
-      }
-      ```
-
-      根据对应viewType，返回对应实例化ViewHolder
-
-      **PS：viewType一般会设置为public static final的静态常量**
-
-   3. 设置相应recyclerviewItem的类型
-
-      ```java
-      @Override
-          public int getItemViewType(int position) {
-              String value = mData.get(position).get("key").toString();
-
-              return Integer.valueOf(value);
-          }
-      ```
-
-      这里可以通过全局的**mData** 去和viewType去对比 判断从而设置viewType 这个mData是父类 MultiItemAdapter持有的相关类型列表的对象
 ---
-### 坑
 
-1. 注意 不论是混合布局 还是Single布局 Adapter与 Holder的类型<T>要一致 否则会在类型不匹配
-2. 空指针 getLayoutId 报空指针 是 add viewType和getviewType不匹配  查看一下设置viewType和addviewType的类型一致否
+## 正文
+
+其实大家只需要把这个当成讲你写的markdown格式的文件变成一个幻灯片，直接可以网页浏览，可分享，可导出，并且还挺漂亮的。大家在做一些内部分享的时候，可以使用！
+
+---
+
+
+
+#### 用法
+
+1. Github账户 新建一个工程，比如share
+
+2. 在该工程下新建一个名叫PITCHME.md<必须叫这个>的文件 这个文件里就是markdown语法写的你要分享啦，或着导出啦的文档
+
+   ---
+
+   ​
+
+3. 拓展方面可以在创建一个PITCHME.yaml的文件 里面可以存储一些配置 比如
+
+   ```java
+   theme : black//主题
+   autoslide : 5500//自动几毫秒后滑动
+   mousewheel : true//可以滚轮控制
+   ```
+
+   等等配置大家可以去官网[GitPitch](https://github.com/gitpitch/gitpitch/wiki/Slide-Delimiters)
+
+4. 还有一个要注意的点，如果想你的文案可以滑动 需要在 PITCHME.md中
+
+   进行模块分割，因为它一页只能显示么多，
+
+   ```java
+   //分页方式：
+
+   ---      //以这个分割上下 渲染后则是横向滑动切换页面
+
+   +++      //以这个分割上下 渲染后则是竖向滑动切换页面
+
+   ```
+
+   ---
+
+   #### 重点
+
+   最重要的是怎么访问，上面已经都准备好原材料了，就差煮了。其实访问很简单：
+
+   ```java
+   https://gitpitch.com/user/repo  //打开网站直接输入gitpitch.com/你的github用户名／你的工程名 Ok啦
+   ```
+
+---
+
+
+
+### 最后
+
+这篇文章好短啊，捂脸！为了弥补一下，这里再向大家推荐一个markdown利器，[typora](https://www.typora.io/)！谁用谁知道！
