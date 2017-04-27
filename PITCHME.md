@@ -5,7 +5,7 @@
 2. 创建 Adapter 继承于QiuckAdapter<T> 同样是QuickAdapter设置参数类型 T
 
    比如 QuickAdapter<User> 或者QuickAdapter<String>
-
++++
 3. 在新建的Adapter中重写和实现QuickAdapter中的一些方法 
 
    1. 构造方法
@@ -16,7 +16,7 @@
 
    3. ```java
       public int getLayoutId() {return R.layout.text_blank;}//设置viewholder的对应的布局文件
-      ```
+ +++     ```
 
 #### 使用
 
@@ -25,7 +25,7 @@
   ```
 
 
-
++++
 ## MultiItemAdapter
 
 1. 创建Holder的过程是一样的 但是要创建多个对应的Holder 因为要的是混合布局
@@ -88,7 +88,7 @@
       ```
 
       这里可以通过全局的**mData** 去和viewType去对比 判断从而设置viewType 这个mData是父类 MultiItemAdapter持有的相关类型列表的对象
-
+---
 ### 坑
 
 1. 注意 不论是混合布局 还是Single布局 Adapter与 Holder的类型<T>要一致 否则会在类型不匹配
